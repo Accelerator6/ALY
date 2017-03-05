@@ -9,21 +9,21 @@ int main()
 {
     int n;
     LinkList L1,L2,L3;
-    InitList(L1);       //´´½¨Èý¸öÍ·
+    InitList(L1);       //åˆ›å»ºä¸‰ä¸ªå¤´
     InitList(L2);
     InitList(L3);
-    cout<<"ÇëÊäÈëµÚÒ»ÌõÓÐÐòÁ´±íÖÐÔªËØµÄ¸öÊý:";
+    cout<<"è¯·è¾“å…¥ç¬¬ä¸€æ¡æœ‰åºé“¾è¡¨ä¸­å…ƒç´ çš„ä¸ªæ•°:";
     cin>>n;
     CreateList(L1,n);
     ListTraverse(L1);
-    cout<<"\nÇëÊäÈëµÚ¶þÌõÓÐÐòÁ´±íÖÐÔªËØµÄ¸öÊý:";
+    cout<<"\nè¯·è¾“å…¥ç¬¬äºŒæ¡æœ‰åºé“¾è¡¨ä¸­å…ƒç´ çš„ä¸ªæ•°:";
     cin>>n;
     CreateList(L2,n);
     ListTraverse(L2);
-    cout<<"½«Á½¸ö±íºÏ²¢:"<<endl;
+    cout<<"å°†ä¸¤ä¸ªè¡¨åˆå¹¶:"<<endl;
     if(ADD(L1,L2,L3))
     {
-        cout<<"ºÏ²¢³É¹¦!"<<endl;
+        cout<<"åˆå¹¶æˆåŠŸ!"<<endl;
         ListTraverse(L3);
     }
     else
