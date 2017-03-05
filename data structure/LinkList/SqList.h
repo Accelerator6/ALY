@@ -2,7 +2,7 @@
 #define Status int
 #define MAXSIZE 50
 using namespace std;
-typedef struct      //  ´¢´æÒ»¸öÏßĞÔ±í
+typedef struct      //  å‚¨å­˜ä¸€ä¸ªçº¿æ€§è¡¨
 {
     ElemType elem[MAXSIZE];
     int length;
@@ -28,9 +28,9 @@ Status CreateList(SqList &L,int n)
 {
 	int i;
 	if(!L.elem||n<0||n>MAXSIZE) return ERROR;
-	cout<<"\nÇëÊäÈë"<<n<<"¸öÔªËØ£º";
+	cout<<"\nè¯·è¾“å…¥"<<n<<"ä¸ªå…ƒç´ ï¼š";
 	for(i=1;i<=n;i++)
-		cin>>L.elem[i-1];     //¿ÉÒÔÓÃËæ»úº¯Êırand()×Ô¶¯Éú³É
+		cin>>L.elem[i-1];     //å¯ä»¥ç”¨éšæœºå‡½æ•°rand()è‡ªåŠ¨ç”Ÿæˆ
 	L.length=n;
 	return OK;
 }
