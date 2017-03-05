@@ -1,7 +1,7 @@
 #include <iostream>
 #define Status int
 using namespace std;
-typedef struct LNode     //  ´¢´æÒ»¸öÏßÐÔ±í
+typedef struct LNode     //  å‚¨å­˜ä¸€ä¸ªçº¿æ€§è¡¨
 {
     ElemType elem;
     struct LNode  * next;
@@ -32,7 +32,7 @@ Status CreateList(LinkList L,int n)
 	if(n<0)return ERROR;
 	while(q->next)
         q=q->next;
-	cout<<"\nÇëÊäÈë"<<n<<"¸öÔªËØ£º";
+	cout<<"\nè¯·è¾“å…¥"<<n<<"ä¸ªå…ƒç´ ï¼š";
 	while(n--)
     {
         p = new LNode;
@@ -149,7 +149,7 @@ Status ADD(LinkList&L1,LinkList&L2,LinkList&L3)
         }
     }
 
-     //ÅÐ¶ÏÄÇÒ»¶Î»¹ÓÐÊ£Óà
+     //åˆ¤æ–­é‚£ä¸€æ®µè¿˜æœ‰å‰©ä½™
         p3->next=(p1?p1:p2);
         delete L2;
     return OK;
