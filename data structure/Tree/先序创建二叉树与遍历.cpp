@@ -4,7 +4,7 @@ using namespace std;
 typedef char TElemtype;
 
 
-/*½áµã½á¹¹Ìå*/
+/*ç»“ç‚¹ç»“æ„ä½“*/
 typedef struct BiTNode
 {
     TElemtype date;
@@ -12,7 +12,7 @@ typedef struct BiTNode
 }BiTNode,*BiTree;
 
 
-/*´´½¨Ê÷*/
+/*åˆ›å»ºæ ‘*/
 void CreateBiTree (BiTree & T)
 {
     TElemtype ch;
@@ -23,13 +23,13 @@ void CreateBiTree (BiTree & T)
     {
         T = new BiTNode;
         T->date = ch;
-        CreateBiTree(T->lchild);                 //¹¹½¨×ó×ÓÊ÷
-        CreateBiTree(T->rchild);                 //¹¹½¨ÓÒ×ÓÊ÷
+        CreateBiTree(T->lchild);                 //æ„å»ºå·¦å­æ ‘
+        CreateBiTree(T->rchild);                 //æ„å»ºå³å­æ ‘
     }
 
 }
 
-/*¶ş²æÊ÷µÄÏÈĞò±éÀú*/
+/*äºŒå‰æ ‘çš„å…ˆåºéå†*/
 void PreOrderTraverse(BiTree T)
 {
     if( T == NULL)
@@ -38,7 +38,7 @@ void PreOrderTraverse(BiTree T)
     PreOrderTraverse(T->lchild);
     PreOrderTraverse(T->rchild);
 }
-/*¶ş²æÊ÷µÄÖĞĞò±éÀú*/
+/*äºŒå‰æ ‘çš„ä¸­åºéå†*/
 void InOrderTraverse(BiTree T)
 {
     if( T == NULL)
@@ -47,7 +47,7 @@ void InOrderTraverse(BiTree T)
     cout<<T->date<<endl;
     PreOrderTraverse(T->rchild);
 }
-/*¶ş²æÊ÷µÄºóĞò±éÀú*/
+/*äºŒå‰æ ‘çš„ååºéå†*/
 void PostOrderTraverse(BiTree T)
 {
     if( T == NULL)
@@ -59,14 +59,14 @@ void PostOrderTraverse(BiTree T)
 int main()
 {
     BiTree T;
-    cout<<"¿ªÊ¼´´½¨¶ş²æÊ÷"<<endl;
+    cout<<"å¼€å§‹åˆ›å»ºäºŒå‰æ ‘"<<endl;
     CreateBiTree(T);
-    cout<<"¶ş²æÊ÷´´½¨Íê±Ï"<<endl;
-    cout<<"ÏÈĞò±éÀú:"<<endl;
+    cout<<"äºŒå‰æ ‘åˆ›å»ºå®Œæ¯•"<<endl;
+    cout<<"å…ˆåºéå†:"<<endl;
     PreOrderTraverse(T);
-    cout<<"ÖĞĞò±éÀú:"<<endl;
+    cout<<"ä¸­åºéå†:"<<endl;
     InOrderTraverse(T);
-    cout<<"ºóĞò±éÀú:"<<endl;
+    cout<<"ååºéå†:"<<endl;
     PostOrderTraverse(T);
     return 0;
 }
