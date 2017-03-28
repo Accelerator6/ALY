@@ -5,26 +5,26 @@
 struct
 {
              char data[MaxSize];
-             int top;                  /*topÎªÕ»¶¥*/
-}op;                             /*¶¨ÒåÒ»¸öº¬dataºÍtopµÄ½á¹¹Ìå*/
+             int top;                  /*topä¸ºæ ˆé¡¶*/
+}op;                             /*å®šä¹‰ä¸€ä¸ªå«dataå’Œtopçš„ç»“æž„ä½“*/
 
-void translate(char str[],char exp[])   /*½«ËãÊõ±í´ïÊ½×ª»»³Éºó×º±í´ïÊ½*/
+void translate(char str[],char exp[])   /*å°†ç®—æœ¯è¡¨è¾¾å¼è½¬æ¢æˆåŽç¼€è¡¨è¾¾å¼*/
 {
 
       char ch;
       int i = 0,t = 0;
       op.top = -1;
-      ch = str[i];                       /*½«strµÄÃ¿Ò»¸öÊý×ª»»³Éch*/
+      ch = str[i];                       /*å°†strçš„æ¯ä¸€ä¸ªæ•°è½¬æ¢æˆch*/
       i++;
-      while(ch != '\0')                  /*ch¶ÔÓ¦²»Í¬µÄ·ûºÅµÄÊ±ºò¶ÔÓ¦µÄ×ª»»Çé¿ö*/
+      while(ch != '\0')                  /*chå¯¹åº”ä¸åŒçš„ç¬¦å·çš„æ—¶å€™å¯¹åº”çš„è½¬æ¢æƒ…å†µ*/
       {
              switch(ch)
              {
-             case '(':                 /*µ±ÊÇ£¨µÄÊ±ºò£¬½«´ËÀ¨ºÅ´æÈëÕ»op*/
+             case '(':                 /*å½“æ˜¯ï¼ˆçš„æ—¶å€™ï¼Œå°†æ­¤æ‹¬å·å­˜å…¥æ ˆop*/
                     op.top++;op.data[op.top]=ch;
                     break;
              case ')':
-                    while(op.data[op.top] != '(')     /*À¨ºÅÄÚµÄ×ª»»ÓÅÏÈ¼¶×î¸ß£¬¹ÊÏÈÌáÈ¡±í´ïÊ½*/
+                    while(op.data[op.top] != '(')     /*æ‹¬å·å†…çš„è½¬æ¢ä¼˜å…ˆçº§æœ€é«˜ï¼Œæ•…å…ˆæå–è¡¨è¾¾å¼*/
                     {
                            exp[t]=op.data[op.top];
                            op.top--;
@@ -40,12 +40,12 @@ void translate(char str[],char exp[])   /*½«ËãÊõ±í´ïÊ½×ª»»³Éºó×º±í´ïÊ½*/
                            op.top--;
                            t++;
                     }
-                    op.top++;            /*»Ö¸´¿É²åÈëÎ»ÖÃ*/
+                    op.top++;            /*æ¢å¤å¯æ’å…¥ä½ç½®*/
                     op.data[op.top] = ch;
                     break;
              case '*':
              case '/':
-                    while(op.top == '/'||op.top == '*')       /*ÓÅÏÈ¼¶*/
+                    while(op.top == '/'||op.top == '*')       /*ä¼˜å…ˆçº§*/
                     {
                            exp[t] = op.data[op.top];
                            op.top--;
@@ -54,7 +54,7 @@ void translate(char str[],char exp[])   /*½«ËãÊõ±í´ïÊ½×ª»»³Éºó×º±í´ïÊ½*/
                     op.top++;
                     op.data[op.top] = ch;
                     break;
-             case ' ':                         /*ºöÂÔ¿Õ¸ñ£¬ÅÅ³ýÎó²Ù×÷*/
+             case ' ':                         /*å¿½ç•¥ç©ºæ ¼ï¼ŒæŽ’é™¤è¯¯æ“ä½œ*/
                     break;
              default:
                     while(ch >= '0'&&ch <= '9')
@@ -63,19 +63,19 @@ void translate(char str[],char exp[])   /*½«ËãÊõ±í´ïÊ½×ª»»³Éºó×º±í´ïÊ½*/
                            ch = str[i];i++;
                     }
                     i--;
-                    exp[t] = ' ';              /*·Ö¸ô²Ù×÷Êý£¬ÎªÁËÃÀ¹Û£¬Ò²ÎªÁËÒÔºóºÃ·Ö¸ô²Ù×÷Êý£¬ºÇºÇ*/
+                    exp[t] = ' ';              /*åˆ†éš”æ“ä½œæ•°ï¼Œä¸ºäº†ç¾Žè§‚ï¼Œä¹Ÿä¸ºäº†ä»¥åŽå¥½åˆ†éš”æ“ä½œæ•°ï¼Œå‘µå‘µ*/
                     t++;
              }
              ch = str[i];
              i++;
       }
-      while(op.top != -1)                   /*µÃµ½Ê£ÏÂµÄ²¿·Ö*/
+      while(op.top != -1)                   /*å¾—åˆ°å‰©ä¸‹çš„éƒ¨åˆ†*/
       {
              exp[t] = op.data[op.top];
              t++;
              op.top--;
       }
-      exp[t] = '\0';                         /*±í´ïÊ½½áÊø*/
+      exp[t] = '\0';                         /*è¡¨è¾¾å¼ç»“æŸ*/
 }
 float cal_value(char exp[])
 {
@@ -83,7 +83,7 @@ float cal_value(char exp[])
       {
              float data[MaxSize];
              int top;
-      }st;                                /*²Ù×÷ÊýÕ»*/
+      }st;                                /*æ“ä½œæ•°æ ˆ*/
       float d;
       char ch;
       int t = 0;
@@ -92,7 +92,7 @@ float cal_value(char exp[])
       t++;
       while(ch != '\0')
       {
-             switch(ch)                  /*ÔËËãÖ÷Ìå*/
+             switch(ch)                  /*è¿ç®—ä¸»ä½“*/
              {
               case '+':
                      st.data[st.top-1] = st.data[st.top-1]+st.data[st.top];
@@ -111,13 +111,13 @@ float cal_value(char exp[])
                              st.data[st.top-1]=st.data[st.top-1]/st.data[st.top];
                       else
                       {
-                             printf("\n\t³ý0ÊÇ´íÎóµÄ");
+                             printf("\n\té™¤0æ˜¯é”™è¯¯çš„");
                       }
                       st.top--;
                       break;
               default:
                      d=0;
-                     while(ch >= '0'&&ch <= '9')       /*´Óºó×º±í´ïÊ½ÖÐ»ñÈ¡²Ù×÷Êý£¬#×÷ÓÃÔÚ´ËÌåÏÖ*/
+                     while(ch >= '0'&&ch <= '9')       /*ä»ŽåŽç¼€è¡¨è¾¾å¼ä¸­èŽ·å–æ“ä½œæ•°ï¼Œ#ä½œç”¨åœ¨æ­¤ä½“çŽ°*/
                      {
                             d = 10*d+ch-'0';
                             ch = exp[t];
@@ -131,16 +131,16 @@ float cal_value(char exp[])
       }
       return st.data[st.top];
 }
-int main()                                   /*¿ÉÒÔÌáµ½Ç°ÃæÈ¥*/
+int main()                                   /*å¯ä»¥æåˆ°å‰é¢åŽ»*/
 {
-      char str[MaxSize],exp[MaxSize];       /*strÎªËãÊõ±í´ïÊ½,expsÎªºó×º±í´ïÊ½*/
-      printf("ÇëÊäÈëÒ»¸öÇóÖµ±í´ïÊ½\n");
-      printf("±í´ïÊ½:");
-      gets(str);                            /*ÊäÈëÒ»¸öËãÊõ±í´ïÊ½*/
-      printf("Ô­±í´ïÊ½ÊÇ:%s\n",str);
-      translate(str,exp);                   /*½«ËãÊõ±í´ïÊ½×ª»»³Éºó×·±í´ïÊ½*/
-      printf("ºó×º±í´ïÊ½£º%s\n",exp);
-      printf("¼ÆËã½á¹û:%g\n",cal_value(exp));/*Í¨¹ýºó×º±í´ïÊ½À´ÇóÖµ*/
+      char str[MaxSize],exp[MaxSize];       /*strä¸ºç®—æœ¯è¡¨è¾¾å¼,expsä¸ºåŽç¼€è¡¨è¾¾å¼*/
+      printf("è¯·è¾“å…¥ä¸€ä¸ªæ±‚å€¼è¡¨è¾¾å¼\n");
+      printf("è¡¨è¾¾å¼:");
+      gets(str);                            /*è¾“å…¥ä¸€ä¸ªç®—æœ¯è¡¨è¾¾å¼*/
+      printf("åŽŸè¡¨è¾¾å¼æ˜¯:%s\n",str);
+      translate(str,exp);                   /*å°†ç®—æœ¯è¡¨è¾¾å¼è½¬æ¢æˆåŽè¿½è¡¨è¾¾å¼*/
+      printf("åŽç¼€è¡¨è¾¾å¼ï¼š%s\n",exp);
+      printf("è®¡ç®—ç»“æžœ:%g\n",cal_value(exp));/*é€šè¿‡åŽç¼€è¡¨è¾¾å¼æ¥æ±‚å€¼*/
       system("pause");
       return 0;
 
