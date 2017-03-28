@@ -1,8 +1,8 @@
-/*¸üĞÂ*/ 
+/*æ›´æ–°*/ 
 
-/*´ÓÎÄ¼ş¶ÁÈ¡Êı¾İ*/ 
+/*ä»æ–‡ä»¶è¯»å–æ•°æ®*/ 
 /*
-²âÊÔÊı¾İ
+æµ‹è¯•æ•°æ®
 Hello World 
 1 1 3 3 2 1 1 2 1 3 1
 010001011011100000110011100110001111001
@@ -18,8 +18,8 @@ typedef char ** HuffmanCode;
 typedef struct 
 {
 	char data; 
-	int weight;//½ÚµãµÄÈ¨Öµ
-	int parent,lchild,rchild;//½ÚµãµÄË«Ç×£¬×óº¢×Ó£¬ÓÒº¢×ÓµÄÏÂ±ê 
+	int weight;//èŠ‚ç‚¹çš„æƒå€¼
+	int parent,lchild,rchild;//èŠ‚ç‚¹çš„åŒäº²ï¼Œå·¦å­©å­ï¼Œå³å­©å­çš„ä¸‹æ ‡ 
 }HtNode,*HuffmanTree;
 
 typedef struct Node 
@@ -29,19 +29,19 @@ typedef struct Node
 }Node,*DeNode;
 
 void menu(); 
-//´´½¨¹ş·òÂüÊ÷HT,n¸öÊı¾İ 
+//åˆ›å»ºå“ˆå¤«æ›¼æ ‘HT,nä¸ªæ•°æ® 
 bool CreatHuffmanTree(HuffmanTree &HT,int n);
 
-//ÔÚ¹ş·òÂüÊ÷HTÖĞÑ¡ÔñÁ½¸öË«Ç×ÓòÎª0µÄÈ¨Öµ×îĞ¡µÄÁ½¸ö½Úµã 
+//åœ¨å“ˆå¤«æ›¼æ ‘HTä¸­é€‰æ‹©ä¸¤ä¸ªåŒäº²åŸŸä¸º0çš„æƒå€¼æœ€å°çš„ä¸¤ä¸ªèŠ‚ç‚¹ 
 void Select(HuffmanTree &HT,int rang,int &min1,int &min2);
 
-//¸ù¾İ¹ş·òÂüÊ÷Çó¹ş·òÂü±àÂë
+//æ ¹æ®å“ˆå¤«æ›¼æ ‘æ±‚å“ˆå¤«æ›¼ç¼–ç 
 void CreatHuffmanCode(HuffmanTree HT,HuffmanCode &HC,int n); 
-//·­Òë±¨ÎÄ 
+//ç¿»è¯‘æŠ¥æ–‡ 
 void TraverseData(HuffmanTree HT,HuffmanCode &HC,string data,int n);
-//ÒëÂë 
+//è¯‘ç  
 bool deHuffmanTree(HuffmanTree HT,string code,int n); 
-//ÓÃÁ´±í±£´æÒëÂëĞÅÏ¢ 
+//ç”¨é“¾è¡¨ä¿å­˜è¯‘ç ä¿¡æ¯ 
 void insert(char data);
 
 	DeNode Head;	
@@ -64,18 +64,18 @@ void menu()
 	HuffmanCode HC;
 	int n;
 	cout << "|-------------------------------------------|"<<endl; 
-	cout << "|              ¹ş·òÂü±àÂëÓëÒëÂë             |"<<endl;
-	cout << "|                 ¡¾1¡¿±àÂë                 |"<<endl; 
-	cout << "|                 ¡¾2¡¿ÒëÂë                 |"<<endl; 
-	cout << "|                 ¡¾3¡¿ÍË³ö                 |"<<endl;
+	cout << "|              å“ˆå¤«æ›¼ç¼–ç ä¸è¯‘ç              |"<<endl;
+	cout << "|                 ã€1ã€‘ç¼–ç                  |"<<endl; 
+	cout << "|                 ã€2ã€‘è¯‘ç                  |"<<endl; 
+	cout << "|                 ã€3ã€‘é€€å‡º                 |"<<endl;
 	cout << "|-------------------------------------------|"<<endl;    
 	int option;
-	cout<<"ÇëÑ¡Ôñ²Ù×÷£º";
+	cout<<"è¯·é€‰æ‹©æ“ä½œï¼š";
 	cin>>option;
 	if(1 == option)
 	{
 		flag = 1;
-		cout<<"ÊäÈëÒ¶×Ó½áµãµÄ¸öÊı:";
+		cout<<"è¾“å…¥å¶å­ç»“ç‚¹çš„ä¸ªæ•°:";
 		cin>>n;
 		if(CreatHuffmanTree(HT,n))
 		{
@@ -83,7 +83,7 @@ void menu()
 			for(int i = 1;i <= n;i++)
 			{
 				int j = 0;
-				cout<<HT[i].data<<"µÄ±àÂëÎª£º";
+				cout<<HT[i].data<<"çš„ç¼–ç ä¸ºï¼š";
 				while(HC[i][j] != '\0')
 				{
 					cout<<HC[i][j];
@@ -94,23 +94,23 @@ void menu()
 			string data;
 		
 			int t;
-			cout<<"\n¡¾1¡¿ÎÄ¼ş¶ÁÈ¡";
-			cout<<"\n¡¾2¡¿ÏÖÔÚÊäÈë"; 
-			cout<<"\nÇëÑ¡Ôñ²Ù×÷£º";
+			cout<<"\nã€1ã€‘æ–‡ä»¶è¯»å–";
+			cout<<"\nã€2ã€‘ç°åœ¨è¾“å…¥"; 
+			cout<<"\nè¯·é€‰æ‹©æ“ä½œï¼š";
 			cin>>t;
 			if(1 == t)
 			{
-				ifstream infile("Êı¾İ.txt",ios_base::in);	
+				ifstream infile("æ•°æ®.txt",ios_base::in);	
 				if(!infile.is_open())
 				{
-					ofstream outfile("Êı¾İ.txt");
+					ofstream outfile("æ•°æ®.txt");
 					outfile.close();
-					//cerr << "ÎÄ¼ş´ò¿ªÊ§°Ü£¡";
+					//cerr << "æ–‡ä»¶æ‰“å¼€å¤±è´¥ï¼";
 					//exit(0);
 				}
 				if(infile.peek()==EOF)
 				{
-					cout << "\nÎŞÊı¾İĞÅÏ¢\n";
+					cout << "\næ— æ•°æ®ä¿¡æ¯\n";
 					return;
 				}
 				else
@@ -120,12 +120,12 @@ void menu()
 			} 
 			if(2 == t)
 			{
-				cout<<"\nÇëÊäÈë·­ÒëµÄÊı¾İ£º";
+				cout<<"\nè¯·è¾“å…¥ç¿»è¯‘çš„æ•°æ®ï¼š";
 				//cin>>data;
 				fflush(stdin);
-				getline(cin,data);//ÊäÈëÒ»ĞĞÊı¾İ 
+				getline(cin,data);//è¾“å…¥ä¸€è¡Œæ•°æ® 
 			}
-			cout<<"×ªÂëÈçÏÂ£º\n";
+			cout<<"è½¬ç å¦‚ä¸‹ï¼š\n";
 			TraverseData(HT,HC,data,n); 
 		}
 	}
@@ -133,28 +133,28 @@ void menu()
 	{
 		if(0 == flag)
 		{
-			cout<<"\nÇëÏÈ¹¹½¨¹ş·òÂüÊ÷\n";
+			cout<<"\nè¯·å…ˆæ„å»ºå“ˆå¤«æ›¼æ ‘\n";
 			return; 
 		}
 		string code;
 		int t;
-		cout<<"\n¡¾1¡¿ÎÄ¼ş¶ÁÈ¡";
-		cout<<"\n¡¾2¡¿ÏÖÔÚÊäÈë"; 
-		cout<<"\nÇëÑ¡Ôñ²Ù×÷£º";
+		cout<<"\nã€1ã€‘æ–‡ä»¶è¯»å–";
+		cout<<"\nã€2ã€‘ç°åœ¨è¾“å…¥"; 
+		cout<<"\nè¯·é€‰æ‹©æ“ä½œï¼š";
 		cin>>t;
 		if(1 == t)
 		{
-			ifstream infile("±àÂë.txt",ios_base::in);	
+			ifstream infile("ç¼–ç .txt",ios_base::in);	
 			if(!infile.is_open())
 			{
-				ofstream outfile("±àÂë.txt");
+				ofstream outfile("ç¼–ç .txt");
 				outfile.close();
-				//cerr << "ÎÄ¼ş´ò¿ªÊ§°Ü£¡";
+				//cerr << "æ–‡ä»¶æ‰“å¼€å¤±è´¥ï¼";
 				//exit(0);
 			}
 			if(infile.peek()==EOF)
 			{
-				cout << "\nÎŞ±àÂëĞÅÏ¢\n";
+				cout << "\næ— ç¼–ç ä¿¡æ¯\n";
 				return;
 			}
 			else
@@ -164,7 +164,7 @@ void menu()
 		} 
 		if(2 == t)
 		{
-			cout << "ÇëÊäÈë±àÂë×Ö·û´®£º"; 
+			cout << "è¯·è¾“å…¥ç¼–ç å­—ç¬¦ä¸²ï¼š"; 
 			cin>>code;
 		}
 		
@@ -172,7 +172,7 @@ void menu()
 		{
 			if( (code[i] != '0') && (code[i] != '1') )
 			{
-				cout<<"ÊäÈëµÄ±àÂëÓĞÎó£¡"<<endl;
+				cout<<"è¾“å…¥çš„ç¼–ç æœ‰è¯¯ï¼"<<endl;
 				return;
 			}	
 		}
@@ -188,7 +188,7 @@ void menu()
 		}
 		else
 		{
-			cout<<"\nÒëÂëÊ§°Ü£¡\n"; 
+			cout<<"\nè¯‘ç å¤±è´¥ï¼\n"; 
 		}
 	}
 	if(3 == option)
@@ -206,17 +206,17 @@ void menu()
 	
 }
 
-//´´½¨¹ş·òÂüÊ÷HT,n¸öÊı¾İ 
+//åˆ›å»ºå“ˆå¤«æ›¼æ ‘HT,nä¸ªæ•°æ® 
 bool CreatHuffmanTree(HuffmanTree &HT,int n)
 {
 	if(n<=1)
 	{
-		cout<<"´´½¨Ê§°Ü\n";
+		cout<<"åˆ›å»ºå¤±è´¥\n";
 		return false; 
 	}
-	int m = 2*n-1;//µ±n´óÓÚ1Ê±£¬n¸öÒ¶×Ó½áµãĞèÒª2*n-1¸ö½Úµã 
-	HT = new HtNode[m+1];//0ºÅµ¥Ôª²»ÓÃ£¬Ç°Ãæ1-n´æ´¢Ò¶×Ó½áµã£¬ºóÃæn-1¸öÎ»ÖÃ´æ·Å·ÇÒ¶×Ó½Úµã
-//---------³õÊ¼»¯¹ş·òÂüÊ÷----------------------------------------------	
+	int m = 2*n-1;//å½“nå¤§äº1æ—¶ï¼Œnä¸ªå¶å­ç»“ç‚¹éœ€è¦2*n-1ä¸ªèŠ‚ç‚¹ 
+	HT = new HtNode[m+1];//0å·å•å…ƒä¸ç”¨ï¼Œå‰é¢1-nå­˜å‚¨å¶å­ç»“ç‚¹ï¼Œåé¢n-1ä¸ªä½ç½®å­˜æ”¾éå¶å­èŠ‚ç‚¹
+//---------åˆå§‹åŒ–å“ˆå¤«æ›¼æ ‘----------------------------------------------	
 	for(int i = 0;i <= m;i++)
 	{
 		HT[i].parent = 0;
@@ -224,15 +224,15 @@ bool CreatHuffmanTree(HuffmanTree &HT,int n)
 		HT[i].rchild = 0;
 	}
 
-	cout<<"ÒÀ´ÎÊäÈëÒª´æ´¢µÄÊı¾İ:";
+	cout<<"ä¾æ¬¡è¾“å…¥è¦å­˜å‚¨çš„æ•°æ®:";
 	//fflush(stdin);
 	getchar();
 	for(int i = 1;i <= n;i++) 
 	{
 		HT[i].data = getchar();
 	}
-	//³õÊ¼»¯Ç°n¸öµ¥ÔªµÄ½ÚµãÈ¨Öµ 
-	cout<<"ÒÀ´ÎÊäÈën¸öÒ¶×Ó½áµãµÄÈ¨ÖµÎª:";
+	//åˆå§‹åŒ–å‰nä¸ªå•å…ƒçš„èŠ‚ç‚¹æƒå€¼ 
+	cout<<"ä¾æ¬¡è¾“å…¥nä¸ªå¶å­ç»“ç‚¹çš„æƒå€¼ä¸º:";
 	for(int i = 1;i <= n;i++) 
 	{
 		cin>>HT[i].weight;
@@ -241,15 +241,15 @@ bool CreatHuffmanTree(HuffmanTree &HT,int n)
 //---------------------------------------------------------------------	
 	int min1,min2;
 	
-	for(int i = n+1;i <= m;i++)//½øĞĞn-1´ÎÑ¡Ôñ 
+	for(int i = n+1;i <= m;i++)//è¿›è¡Œn-1æ¬¡é€‰æ‹© 
 	{
-		//É¾³ıÁ½¸öÈ¨ÖµÔö¼ÓÒ»¸öÈ¨ÖµËùÒÔ´«Èën-1; 
-		//ÔÚHT[k]£¨1<k<n-1£©ÖĞ 
+		//åˆ é™¤ä¸¤ä¸ªæƒå€¼å¢åŠ ä¸€ä¸ªæƒå€¼æ‰€ä»¥ä¼ å…¥n-1; 
+		//åœ¨HT[k]ï¼ˆ1<k<n-1ï¼‰ä¸­ 
 		Select(HT,i-1,min1,min2);
-		//´ÓÉ­ÁÖÖĞÉ¾³ımin1,min2;°ÑÆäË«Ç×¸ÄÎª·Ç0 
+		//ä»æ£®æ—ä¸­åˆ é™¤min1,min2;æŠŠå…¶åŒäº²æ”¹ä¸ºé0 
 		HT[min1].parent = i;
 		HT[min2].parent = i;
-		//ºÏ²¢£¨½«min1,min2µÄÈ¨ÖµºÍ×÷ÎªÒ»¸öĞÂÈ¨Öµ´æÈëµ½nÖ®ºóµÄµ¥ÔªÖĞ£¬Í¬Ê±¼ÇÂ¼ËüµÄ×óº¢×ÓÓëÓÒº¢×Ó£©   
+		//åˆå¹¶ï¼ˆå°†min1,min2çš„æƒå€¼å’Œä½œä¸ºä¸€ä¸ªæ–°æƒå€¼å­˜å…¥åˆ°nä¹‹åçš„å•å…ƒä¸­ï¼ŒåŒæ—¶è®°å½•å®ƒçš„å·¦å­©å­ä¸å³å­©å­ï¼‰   
 		HT[i].lchild = min1;
 		HT[i].rchild = min2;
 		HT[i].weight = HT[min1].weight+HT[min2].weight;
@@ -261,8 +261,8 @@ bool CreatHuffmanTree(HuffmanTree &HT,int n)
 //	}	
 }
 
-//Í¨¹ın-1´ÎÑ¡Ôñ£¨´Óµ±Ç°É­ÁÖÖĞÑ¡³öË«Ç×Îª0ÇÒÈ¨Öµ×îĞ¡µÄÁ½¸ö½ÚµãÏÂ±êmin1,min2£©¡¢
-//É¾³ı£¨½«min1,min2µÄË«Ç×¸ÄÎª·Ç0£©¡¢
+//é€šè¿‡n-1æ¬¡é€‰æ‹©ï¼ˆä»å½“å‰æ£®æ—ä¸­é€‰å‡ºåŒäº²ä¸º0ä¸”æƒå€¼æœ€å°çš„ä¸¤ä¸ªèŠ‚ç‚¹ä¸‹æ ‡min1,min2ï¼‰ã€
+//åˆ é™¤ï¼ˆå°†min1,min2çš„åŒäº²æ”¹ä¸ºé0ï¼‰ã€
 
 void Select(HuffmanTree &HT,int rang,int &min1,int &min2)
 {
@@ -272,7 +272,7 @@ void Select(HuffmanTree &HT,int rang,int &min1,int &min2)
 	{
 		if( 0 == HT[i].parent )
 		{
-			if(HT[i].weight < HT[min1].weight)//ÕÒµ½×îĞ¡È¨ÖµµÄµÄ½ÚµãÎ»ÖÃ 
+			if(HT[i].weight < HT[min1].weight)//æ‰¾åˆ°æœ€å°æƒå€¼çš„çš„èŠ‚ç‚¹ä½ç½® 
 			{
 				min1 = i;
 			}
@@ -283,7 +283,7 @@ void Select(HuffmanTree &HT,int rang,int &min1,int &min2)
 	{
 		if( (min1 != i) &&(0 == HT[i].parent))
 		{
-			if( HT[i].weight < HT[min2].weight )//ÕÒµ½×îĞ¡È¨ÖµµÄµÄ½ÚµãÎ»ÖÃ 
+			if( HT[i].weight < HT[min2].weight )//æ‰¾åˆ°æœ€å°æƒå€¼çš„çš„èŠ‚ç‚¹ä½ç½® 
 			{
 				min2 = i;
 			}
@@ -291,22 +291,22 @@ void Select(HuffmanTree &HT,int rang,int &min1,int &min2)
 	} 	
 //	cout <<"qq-----------" <<HT[min1].weight<<"  "<<HT[min2].weight<<endl;	
 }
-//¸ù¾İ¹ş·òÂüÊ÷Çó¹ş·òÂü±àÂë
+//æ ¹æ®å“ˆå¤«æ›¼æ ‘æ±‚å“ˆå¤«æ›¼ç¼–ç 
 void CreatHuffmanCode(HuffmanTree HT,HuffmanCode &HC,int n)
 {
 	HC = new char*[n+1];
 	char *code = new char[n];
 	code[n-1] = '\0';
 	int start,now,f;
-	for(int i = 1;i <= n;i++)//´ÓÒ¶×Ó¿ªÊ¼ 
+	for(int i = 1;i <= n;i++)//ä»å¶å­å¼€å§‹ 
 	{
 		start = n-1;
 		now = i;
-		f = HT[i].parent; //fÖ¸Ïò½ÚµãcµÄË«Ç×½Úµã 
-		while(f != 0)//¸ù½ÚµãµÄË«Ç×Îª0 
+		f = HT[i].parent; //fæŒ‡å‘èŠ‚ç‚¹cçš„åŒäº²èŠ‚ç‚¹ 
+		while(f != 0)//æ ¹èŠ‚ç‚¹çš„åŒäº²ä¸º0 
 		{
 			start--;
-			if(HT[f].lchild == now)//ÓÃÀ´ÅĞ¶ÏÊÇ×óº¢×Ó»¹ÊÇÓÒº¢×Ó 
+			if(HT[f].lchild == now)//ç”¨æ¥åˆ¤æ–­æ˜¯å·¦å­©å­è¿˜æ˜¯å³å­©å­ 
 			{
 				code[start] = '0';	
 			} 
@@ -314,8 +314,8 @@ void CreatHuffmanCode(HuffmanTree HT,HuffmanCode &HC,int n)
 			{
 				code[start] = '1';
 			}
-			now = f;//ÏòÉÏ×ß 
-			f = HT[f].parent;//ÏòÉÏ×ß 
+			now = f;//å‘ä¸Šèµ° 
+			f = HT[f].parent;//å‘ä¸Šèµ° 
 		} 
 		HC[i] = new char [n-start];
 		strcpy(HC[i],&code[start]);
@@ -330,18 +330,18 @@ bool deHuffmanTree(HuffmanTree HT,string code,int n)
 		int k = 2*n-1;
 		while(1)
 		{
-			//´Ó¸ù½áµãµ½Ò¶×Ó½ÚµãÈ¥Æ¥Åä£¬Êä³ö×îºóµÄÄÇ¸öÈ¨Öµ
-			if( (code[j] == '0') && (HT[k].lchild != 0) )//Èç¹ûcode[i]ÊÇ0,²¢ÇÒ×óº¢×Ó²»Îª0£¬Ôò¼ÌĞø³¯Ò¶×Ó½áµãÕÒ¡£
+			//ä»æ ¹ç»“ç‚¹åˆ°å¶å­èŠ‚ç‚¹å»åŒ¹é…ï¼Œè¾“å‡ºæœ€åçš„é‚£ä¸ªæƒå€¼
+			if( (code[j] == '0') && (HT[k].lchild != 0) )//å¦‚æœcode[i]æ˜¯0,å¹¶ä¸”å·¦å­©å­ä¸ä¸º0ï¼Œåˆ™ç»§ç»­æœå¶å­ç»“ç‚¹æ‰¾ã€‚
 			{
 			    k = HT[k].lchild;
 			    j++;
 			}
-			else if( (code[j] == '1') && (HT[k].rchild != 0) )//Èç¹ûcode[i]ÊÇ1,²¢ÇÒÓÒº¢×Ó²»Îª0£¬Ôò¼ÌĞø³¯Ò¶×Ó½áµãÕÒ¡£
+			else if( (code[j] == '1') && (HT[k].rchild != 0) )//å¦‚æœcode[i]æ˜¯1,å¹¶ä¸”å³å­©å­ä¸ä¸º0ï¼Œåˆ™ç»§ç»­æœå¶å­ç»“ç‚¹æ‰¾ã€‚
 			{
 			    k = HT[k].rchild;	
 			    j++;
 			}
-			else if( (HT[k].rchild == 0) && (HT[k].lchild == 0) )//Èç¹ûÊÇÒ¶×Ó½áµã£¬Ôò°ÑËüµÄÈ¨Öµ¸³¸ødecode[i]
+			else if( (HT[k].rchild == 0) && (HT[k].lchild == 0) )//å¦‚æœæ˜¯å¶å­ç»“ç‚¹ï¼Œåˆ™æŠŠå®ƒçš„æƒå€¼èµ‹ç»™decode[i]
 			{ 
 			    insert(HT[k].data);
 			    break;
@@ -353,8 +353,8 @@ bool deHuffmanTree(HuffmanTree HT,string code,int n)
 void TraverseData(HuffmanTree HT,HuffmanCode &HC,string data,int n)
 {
 	int i = 1;
-	//¼ÓÈë±£´æÎÄ¼ş 
-	ofstream outfile("±àÂë.txt",ios_base::out);
+	//åŠ å…¥ä¿å­˜æ–‡ä»¶ 
+	ofstream outfile("ç¼–ç .txt",ios_base::out);
 	while(data[i-1] != '\0')
 	{
 		int j = 0;
