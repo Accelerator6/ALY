@@ -5,7 +5,7 @@ using namespace std;
 typedef char ElemType;
 
 /*
- *          Ò»¸ö¼òµ¥µÄÏßĞÔÕ»£¨É¾³ı£¬ÔöÌí£¬±éÀú£©
+ *          ä¸€ä¸ªç®€å•çš„çº¿æ€§æ ˆï¼ˆåˆ é™¤ï¼Œå¢æ·»ï¼Œéå†ï¼‰
  */
 class SqStack
 {
@@ -49,7 +49,7 @@ int SqStack::show()
 
 void translate(string& a,char sdd[])
 {
-/*IÎªÔ­À´×Ö·ûÊı×éÖĞµÄË÷Òı TÎªºó×º×Ö·ûÊı×éÖĞµÄË÷Òı£¨²»º¬À¨ºÅ£©*/
+/*Iä¸ºåŸæ¥å­—ç¬¦æ•°ç»„ä¸­çš„ç´¢å¼• Tä¸ºåç¼€å­—ç¬¦æ•°ç»„ä¸­çš„ç´¢å¼•ï¼ˆä¸å«æ‹¬å·ï¼‰*/
     char ch,e;
     int i = 0,t = 0;
     SqStack Q;
@@ -144,7 +144,7 @@ float complet(char sdd[])
 			case '/':
 				if(Q.date[Q.top]==0)
 				{
-					cout<<"±»³ıÊı²»ÄÜÎª0£¡"<<endl;
+					cout<<"è¢«é™¤æ•°ä¸èƒ½ä¸º0ï¼"<<endl;
 					return 0;
 				}
 				else
@@ -171,9 +171,9 @@ int main()
 {
     string str;
 	char sdd[MAXSIZE];
-    cout<<"ÇëÊäÈë±í´ïÊ½£º";
+    cout<<"è¯·è¾“å…¥è¡¨è¾¾å¼ï¼š";
     cin>>str;
     translate(str,sdd);
-    cout<<"Äæ²¨À¼±í´ïÊ½Îª£º"<<sdd<<endl;
-    cout<<"½á¹ûÎª:"<<complet(sdd);
+    cout<<"é€†æ³¢å…°è¡¨è¾¾å¼ä¸ºï¼š"<<sdd<<endl;
+    cout<<"ç»“æœä¸º:"<<complet(sdd);
 }
